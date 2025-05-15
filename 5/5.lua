@@ -1,4 +1,4 @@
-local is_prime = require('../is_prime')
+local is_prime = require('../common/is_prime')
 
 local function prime_factors(number)
     if is_prime(number) then return { [number] = 1 } end
