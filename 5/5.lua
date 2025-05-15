@@ -1,9 +1,4 @@
-local function is_prime(number)
-    for i = 2, math.floor(math.sqrt(number)) do
-        if number % i == 0 then return false end
-    end
-    return true
-end
+local is_prime = require('../is_prime')
 
 local function prime_factors(number)
     if is_prime(number) then return { [number] = 1 } end
