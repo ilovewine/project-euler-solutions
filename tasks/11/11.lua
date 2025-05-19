@@ -24,14 +24,6 @@ file:close()
 local MAX_VECTOR_LENGTH = 4
 local solution = 0
 
-local function calculate_product(table)
-    local result = 1
-    for _, number in pairs(table) do
-        result = result * number
-    end
-    return result
-end
-
 local function reassess_solution(boundaryCb, getItemCb)
     if boundaryCb() then
         local numbers, should_calculate = {}, true
@@ -45,7 +37,10 @@ local function reassess_solution(boundaryCb, getItemCb)
             end
         end
         if should_calculate then
-            local possible_solution = calculate_product(numbers)
+            local possible_solution = 1
+            for _, number in pairs(numbers) do
+                possible_solution = possible_solution * number
+            end
             if possible_solution > solution then solution = possible_solution end
         end
     end
