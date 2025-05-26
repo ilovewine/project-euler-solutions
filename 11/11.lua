@@ -1,25 +1,6 @@
-local script_path = debug.getinfo(1, "S").source:sub(2)
-local script_dir = script_path:match("(.*/)")
+local read_matrix = require('../common/read_matrix')
 
-local file = io.open(script_dir .. './input.txt', 'r')
-
-if not file then
-    error('File not found')
-end
-
-local matrix = {}
-
-local content = file:read("l")
-while content do
-    local row = {}
-
-    for cell in content:gmatch("%d+") do
-        table.insert(row, tonumber(cell))
-    end
-    table.insert(matrix, row)
-    content = file:read("l")
-end
-file:close()
+local matrix = read_matrix('./input.txt', "%d+")
 
 local MAX_VECTOR_LENGTH = 4
 local solution = 0
